@@ -1,0 +1,31 @@
+<h2>Form Array</h2>
+<div style="border: 1px solid rgb(90, 15, 228); padding:15px">
+    <form action="" [formGroup]="form">
+        <label for="">Name</label><br>
+        <input type="text" name="" id="" formControlName="name"><br>
+        <p>Select Gender</p>
+        <label for="">Male</label>
+        <input type="radio" id="" formControlName="gender" value="male"><br>
+        <label for="">Female</label>
+        <input type="radio" id="" formControlName="gender" value="female"><br>
+        <p>Qualifications</p>
+        <div formArrayName="qualifications">
+            <div *ngFor="let quali of qualifications.controls let i=index ">
+                <div [formGroupName]="i">
+                    <label for="">Qualification</label><br>
+                    <input type="text" formControlName="qua"><br>
+                    <label for="">Year Of Passed</label><br>
+                    <input type="text" formControlName="passed"><br>
+                    <button (click)="removeQuali(i)"> Remove Qualification</button>
+                </div>
+            </div>
+
+            <button (click)="addQuali()">Add Qualification</button><br>
+        </div>
+        <button (click)="onSubmit()">Submit</button>
+    </form>
+</div>&nbsp;
+<div style="border: 1px solid rgb(9, 199, 41); padding:15px">
+    Name : {{form.value.name}} <br>
+    Gender : {{form.value.gender}}<br>
+</div>
